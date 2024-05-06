@@ -10,7 +10,7 @@ dotenv.config({
 app.use(session({
     secret: 'rahul',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
 
 

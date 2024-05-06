@@ -4,12 +4,19 @@ import { User } from "../model/user.model.js";
 
 // serializing user
 passport.serializeUser((user, done) => {
-    done(null, user);
+    done(null, user.id);
 });
 
 //deserializing user
-passport.deserializeUser((user, done) => {
-    done(null, user);
+passport.deserializeUser((id, done) => {
+    User.findById(id)
+    .then(user => {
+      done(null, user);
+    })
+    .catch(err => {
+      done(err, null);
+    });
+    
 });
 
 // Strategy setup
@@ -45,7 +52,11 @@ passport.use(
                     const newsavedUser = await newUser.save();
                     done(null, newsavedUser);
                 }
-                return done(null, findUser);    
+                else{
+                    console.log("User already exist in DB");
+                    done(null, findUser);
+                }
+                     
             } catch (error) {
                 console.log("problem in creating / saving user in db", error);
             }
