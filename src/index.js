@@ -3,15 +3,11 @@ import connectDB from "./db/index.js";
 import { app } from "./app.js";
 import "./middlewares/passport-auth.js"
 import passport from "passport";
-import session from "express-session"
+
 dotenv.config({
     path: "./env"
 })
-app.use(session({
-    secret: 'rahul',
-    resave: false,
-    saveUninitialized: false
-}));
+
 
 
 
