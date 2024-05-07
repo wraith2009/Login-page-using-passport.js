@@ -25,7 +25,7 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:8000/auth/google/redirect",
+            callbackURL: "https://localhost:8000/auth/google/redirect",
             passReqToCallback: true
         },
 
@@ -54,6 +54,7 @@ passport.use(
                 }
                 else{
                     console.log("User already exist in DB");
+                    console.log("the details are", findUser);
                     done(null, findUser);
                 }
                      
