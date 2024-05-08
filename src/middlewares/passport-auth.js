@@ -25,7 +25,7 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "https://localhost:8000/auth/google/redirect",
+            callbackURL: "https://cf7e-103-248-95-25.ngrok-free.app/auth/google/redirect",
             passReqToCallback: true
         },
 

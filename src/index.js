@@ -16,15 +16,17 @@ const options = {
     cert: fs.readFileSync('C:\\Users\\Rahul\\cert.pem')
 };
 
-connectDB().then(() => {
-    // Create HTTPS server
-    https.createServer(options, app).listen(process.env.PORT || 8000, () => {
-        console.log(`Server is running at port : ${process.env.PORT}`);
-    });
-}).catch((err) => {
-    console.log("MongoDB connection failed !!!", err);
-});
-
+connectDB().then(
+    ()=>{
+        app.listen(process.env.PORT || 8000,()=>{
+            console.log(" Server is running at ",process.env.PORT)
+        })
+    }
+).catch(
+    (err)=>{
+        console.log("MongoDB connection failed",err)
+    }
+)
 // Define routes
 app.get('/auth/google',
     passport.authenticate('google', { scope: ['email'] })
